@@ -178,7 +178,7 @@ class scribeIdentifier:
         return trainLoader, valLoader, scribeNames
     
     def train(self, trainLoader, valLoader, epochs: int = 20, lr: float = 0.001):
-        """Train the model"""
+
         criterion = nn.CrossEntropyLoss()
         optimizer = optim.Adam(self.model.parameters(), lr=lr)
         scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=5)
@@ -226,7 +226,7 @@ class scribeIdentifier:
                 print(f'  New best model saved!')
     
     def evaluate(self, dataLoader, criterion):
-        """Evaluate model on validation/test set"""
+
         self.model.eval()
         totalLoss = 0.0
         correct = 0
@@ -252,7 +252,7 @@ class scribeIdentifier:
     
 
     def predict(self, imgPath: str, scribeNames: List[str]) -> Tuple[str, Dict[str, float]]:
-        """Predict copyist for a single manuscript page"""
+
         self.model.eval()
         
         # Load and transform image
@@ -277,7 +277,7 @@ class scribeIdentifier:
     
 
     def plot_training_history(self):
-        """Visualize training history"""
+
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
         
         # Loss plot
@@ -379,7 +379,7 @@ if __name__ == "__main__":
 
     # predict one new page. old code.
     # CHANGE FOR EACH IMAGE CANT FIND A BETTER WAY TO DO THIS
-    #testImg = "C:/Users/sophi/Desktop/TECH/senior/fall 2025/machine learning/Manuscript-Analysis-Capstone/test_scribes/test_scribe_I/lfg_f257v.JPG"
+    #testImg = "test_scribe_I/lfg_f257v.JPG"
     #predictedScribe, probabilities = identifier.predict(testImg, scribeNames)
     
     #print(f"\nPredicted scribe: {predictedScribe}")
